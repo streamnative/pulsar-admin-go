@@ -18,7 +18,7 @@
 package pulsar
 
 import (
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/utils"
+	"github.com/streamnative/pulsar-admin-go/pkg/utils"
 )
 
 // Clusters is admin interface for clusters management

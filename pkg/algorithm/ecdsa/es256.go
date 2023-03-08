@@ -22,19 +22,19 @@ import (
 	"crypto/elliptic"
 	"crypto/rand"
 
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/common/algorithm/keypair"
-
 	"github.com/pkg/errors"
+
+	"github.com/streamnative/pulsar-admin-go/pkg/algorithm/keypair"
 )
 
-type ES512 struct{}
+type ES256 struct{}
 
-func (h *ES512) GenerateSecret() ([]byte, error) {
+func (h *ES256) GenerateSecret() ([]byte, error) {
 	return nil, errors.New("unsupported operation")
 }
 
-func (h *ES512) GenerateKeyPair() (*keypair.KeyPair, error) {
-	pri, err := ecdsa.GenerateKey(elliptic.P521(), rand.Reader)
+func (h *ES256) GenerateKeyPair() (*keypair.KeyPair, error) {
+	pri, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
 	if err != nil {
 		return nil, err
 	}

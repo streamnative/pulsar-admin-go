@@ -18,7 +18,7 @@
 package utils
 
 import (
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/common"
+	"github.com/streamnative/pulsar-admin-go/pkg/common"
 )
 
 const (

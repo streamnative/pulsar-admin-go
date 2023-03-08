@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/common"
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/utils"
+	"github.com/streamnative/pulsar-admin-go/pkg/common"
+	"github.com/streamnative/pulsar-admin-go/pkg/utils"
 )
 
 // Topics is admin interface for topics management

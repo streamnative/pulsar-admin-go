@@ -23,7 +23,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/common"
+	"github.com/streamnative/pulsar-admin-go/pkg/common"
 )
 
 // Provider provide a general method to add auth message

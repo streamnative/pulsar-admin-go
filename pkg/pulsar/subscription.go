@@ -27,9 +27,9 @@ import (
 	"strconv"
 	"strings"
 
-	// nolint
 	"github.com/golang/protobuf/proto"
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/utils"
+
+	"github.com/streamnative/pulsar-admin-go/pkg/utils"
 )
 
 // Subscriptions is admin interface for subscriptions management

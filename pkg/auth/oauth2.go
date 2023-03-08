@@ -22,15 +22,15 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"github.com/pkg/errors"
-
 	"github.com/99designs/keyring"
 	"github.com/apache/pulsar-client-go/oauth2"
 	"github.com/apache/pulsar-client-go/oauth2/cache"
 	clock2 "github.com/apache/pulsar-client-go/oauth2/clock"
 	"github.com/apache/pulsar-client-go/oauth2/store"
-	util "github.com/streamnative/pulsar-admin-go/pkg/pulsar/utils"
+	"github.com/pkg/errors"
 	xoauth2 "golang.org/x/oauth2"
+
+	util "github.com/streamnative/pulsar-admin-go/pkg/utils"
 )
 
 const (

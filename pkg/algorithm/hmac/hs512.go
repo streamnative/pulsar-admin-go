@@ -20,22 +20,22 @@ package hmac
 import (
 	"crypto/hmac"
 	"crypto/rand"
-	"crypto/sha256"
-
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/common/algorithm/keypair"
+	"crypto/sha512"
 
 	"github.com/pkg/errors"
+
+	"github.com/streamnative/pulsar-admin-go/pkg/algorithm/keypair"
 )
 
-type HS256 struct{}
+type HS512 struct{}
 
-func (h *HS256) GenerateSecret() ([]byte, error) {
-	bytes := make([]byte, 32)
+func (h *HS512) GenerateSecret() ([]byte, error) {
+	bytes := make([]byte, 64)
 	rand.Read(bytes)
-	s := hmac.New(sha256.New, bytes)
+	s := hmac.New(sha512.New, bytes)
 	return s.Sum(nil), nil
 }
 
-func (h *HS256) GenerateKeyPair() (*keypair.KeyPair, error) {
+func (h *HS512) GenerateKeyPair() (*keypair.KeyPair, error) {
 	return nil, errors.New("unsupported operation")
 }

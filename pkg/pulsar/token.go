@@ -24,8 +24,8 @@ import (
 
 	"github.com/golang-jwt/jwt/v4"
 
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/common/algorithm/algorithm"
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/common/algorithm/keypair"
+	"github.com/streamnative/pulsar-admin-go/pkg/algorithm/algorithm"
+	"github.com/streamnative/pulsar-admin-go/pkg/algorithm/keypair"
 
 	"github.com/pkg/errors"
 )

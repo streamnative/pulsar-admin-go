@@ -21,8 +21,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/common/algorithm/algorithm"
 	"github.com/stretchr/testify/require"
+
+	"github.com/streamnative/pulsar-admin-go/pkg/algorithm/algorithm"
 )
 
 func TestCreateToken(t *testing.T) {

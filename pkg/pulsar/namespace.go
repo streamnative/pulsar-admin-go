@@ -22,8 +22,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/common"
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/utils"
+	"github.com/streamnative/pulsar-admin-go/pkg/common"
+	"github.com/streamnative/pulsar-admin-go/pkg/utils"
 )
 
 // Namespaces is admin interface for namespaces management

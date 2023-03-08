@@ -18,12 +18,12 @@
 package algorithm
 
 import (
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/common/algorithm/ecdsa"
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/common/algorithm/hmac"
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/common/algorithm/keypair"
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/common/algorithm/rsa"
-
 	"github.com/pkg/errors"
+
+	"github.com/streamnative/pulsar-admin-go/pkg/algorithm/ecdsa"
+	"github.com/streamnative/pulsar-admin-go/pkg/algorithm/hmac"
+	"github.com/streamnative/pulsar-admin-go/pkg/algorithm/keypair"
+	"github.com/streamnative/pulsar-admin-go/pkg/algorithm/rsa"
 )
 
 type Algorithm string

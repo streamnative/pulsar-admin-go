@@ -15,28 +15,27 @@
 // specific language governing permissions and limitations
 // under the License.
 
-package ecdsa
+package rsa
 
 import (
-	"crypto/ecdsa"
-	"crypto/elliptic"
 	"crypto/rand"
-
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/common/algorithm/keypair"
+	"crypto/rsa"
 
 	"github.com/pkg/errors"
+
+	"github.com/streamnative/pulsar-admin-go/pkg/algorithm/keypair"
 )
 
-type ES256 struct{}
+type RS256 struct{}
 
-func (h *ES256) GenerateSecret() ([]byte, error) {
+func (p *RS256) GenerateSecret() ([]byte, error) {
 	return nil, errors.New("unsupported operation")
 }
 
-func (h *ES256) GenerateKeyPair() (*keypair.KeyPair, error) {
-	pri, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
+func (p *RS256) GenerateKeyPair() (*keypair.KeyPair, error) {
+	pri, err := rsa.GenerateKey(rand.Reader, 2048)
 	if err != nil {
 		return nil, err
 	}
-	return keypair.New(keypair.ECDSA, pri), nil
+	return keypair.New(keypair.RSA, pri), nil
 }

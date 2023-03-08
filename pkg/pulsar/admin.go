@@ -24,8 +24,8 @@ import (
 
 	"github.com/streamnative/pulsar-admin-go/pkg/auth"
 	"github.com/streamnative/pulsar-admin-go/pkg/cli"
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/common"
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/utils"
+	"github.com/streamnative/pulsar-admin-go/pkg/common"
+	"github.com/streamnative/pulsar-admin-go/pkg/utils"
 )
 
 type TLSOptions struct {

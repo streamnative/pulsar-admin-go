@@ -15,27 +15,27 @@
 // specific language governing permissions and limitations
 // under the License.
 
-package rsa
+package hmac
 
 import (
+	"crypto/hmac"
 	"crypto/rand"
-	"crypto/rsa"
-
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/common/algorithm/keypair"
+	"crypto/sha512"
 
 	"github.com/pkg/errors"
+
+	"github.com/streamnative/pulsar-admin-go/pkg/algorithm/keypair"
 )
 
-type RS384 struct{}
+type HS384 struct{}
 
-func (p *RS384) GenerateSecret() ([]byte, error) {
-	return nil, errors.New("unsupported operation")
+func (h *HS384) GenerateSecret() ([]byte, error) {
+	bytes := make([]byte, 48)
+	rand.Read(bytes)
+	s := hmac.New(sha512.New384, bytes)
+	return s.Sum(nil), nil
 }
 
-func (p *RS384) GenerateKeyPair() (*keypair.KeyPair, error) {
-	pri, err := rsa.GenerateKey(rand.Reader, 3072)
-	if err != nil {
-		return nil, err
-	}
-	return keypair.New(keypair.RSA, pri), nil
+func (h *HS384) GenerateKeyPair() (*keypair.KeyPair, error) {
+	return nil, errors.New("unsupported operation")
 }

@@ -15,27 +15,28 @@
 // specific language governing permissions and limitations
 // under the License.
 
-package hmac
+package ecdsa
 
 import (
-	"crypto/hmac"
+	"crypto/ecdsa"
+	"crypto/elliptic"
 	"crypto/rand"
-	"crypto/sha512"
 
-	"github.com/streamnative/pulsar-admin-go/pkg/pulsar/common/algorithm/keypair"
+	"github.com/streamnative/pulsar-admin-go/pkg/algorithm/keypair"
 
 	"github.com/pkg/errors"
 )
 
-type HS512 struct{}
+type ES384 struct{}
 
-func (h *HS512) GenerateSecret() ([]byte, error) {
-	bytes := make([]byte, 64)
-	rand.Read(bytes)
-	s := hmac.New(sha512.New, bytes)
-	return s.Sum(nil), nil
+func (h *ES384) GenerateSecret() ([]byte, error) {
+	return nil, errors.New("unsupported operation")
 }
 
-func (h *HS512) GenerateKeyPair() (*keypair.KeyPair, error) {
-	return nil, errors.New("unsupported operation")
+func (h *ES384) GenerateKeyPair() (*keypair.KeyPair, error) {
+	pri, err := ecdsa.GenerateKey(elliptic.P384(), rand.Reader)
+	if err != nil {
+		return nil, err
+	}
+	return keypair.New(keypair.ECDSA, pri), nil
 }
