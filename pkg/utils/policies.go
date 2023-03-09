@@ -17,10 +17,6 @@
 
 package utils
 
-import (
-	"github.com/streamnative/pulsar-admin-go/pkg/common"
-)
-
 const (
 	FirstBoundary string = "0x00000000"
 	LastBoundary  string = "0xffffffff"
@@ -52,14 +48,14 @@ type Policies struct {
 	ClusterSubscribeRate        map[string]SubscribeRate          `json:"clusterSubscribeRate"`
 	TopicAutoCreationConfig     *TopicAutoCreationConfig          `json:"autoTopicCreationOverride"`
 	SchemaCompatibilityStrategy SchemaCompatibilityStrategy       `json:"schema_auto_update_compatibility_strategy"`
-	AuthPolicies                common.AuthPolicies               `json:"auth_policies"`
+	AuthPolicies                AuthPolicies                      `json:"auth_policies"`
 	SubscriptionAuthMode        SubscriptionAuthMode              `json:"subscription_auth_mode"`
 	IsAllowAutoUpdateSchema     *bool                             `json:"is_allow_auto_update_schema"`
 }
 
 func NewDefaultPolicies() *Policies {
 	return &Policies{
-		AuthPolicies:                *common.NewAuthPolicies(),
+		AuthPolicies:                *NewAuthPolicies(),
 		ReplicationClusters:         make([]string, 0, 10),
 		BacklogQuotaMap:             make(map[BacklogQuotaType]BacklogQuota),
 		TopicDispatchRate:           make(map[string]DispatchRate),
