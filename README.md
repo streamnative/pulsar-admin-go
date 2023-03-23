@@ -60,6 +60,9 @@ func main() {
 	}
 
 	tenants, err := admin.Tenants().List()
+    if err != nil {
+        panic(err)
+	}
 }
 ```
 
@@ -73,13 +76,16 @@ import (
 )
 
 func main() {
-	cfg := &pulsaradmin.Config{}
+    cfg := &pulsaradmin.Config{}
 	admin, err := pulsaradmin.NewClient(cfg)
 	if err != nil {
 		panic(err)
 	}
 
 	namespaces, err := admin.Namespaces().GetNamespaces("public")
+    if err != nil {
+        panic(err)
+	}
 }
 ```
 
