@@ -97,9 +97,7 @@ func main() {
         panic(err)
     }
     
-    if err := admin.Namespaces().CreateNamespace("public/dev"); err != nil {
-        panic(err)
-    }
+    admin.Namespaces().CreateNamespace("public/dev")
 }
 ```
 
@@ -121,14 +119,9 @@ func main() {
         panic(err)
     }
     
-    topic, err := utils.GetTopicName("public/dev/topic")
-    if err != nil {
-        panic(err)
-    }
+    topic, _ := utils.GetTopicName("public/dev/topic")
     
-    if err := admin.Topics().Create(*topic, 3); err != nil {
-        panic(err)
-    }
+    admin.Topics().Create(*topic, 3)
 }
 ```
 
