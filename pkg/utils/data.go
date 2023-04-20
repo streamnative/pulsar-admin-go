@@ -26,7 +26,7 @@ type ClusterData struct {
 	AuthenticationPlugin           string   `json:"authenticationPlugin"`
 	AuthenticationParameters       string   `json:"authenticationParameters"`
 	BrokerClientTrustCertsFilePath string   `json:"brokerClientTrustCertsFilePath"`
-	BrokerClientTlsEnabled         bool     `json:"brokerClientTlsEnabled"`
+	BrokerClientTLSEnabled         bool     `json:"brokerClientTlsEnabled"`
 }
 
 // FunctionData information for a Pulsar Function
