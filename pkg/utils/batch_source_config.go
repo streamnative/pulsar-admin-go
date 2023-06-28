@@ -15,13 +15,12 @@
 
 package utils
 
-type ConsumerConfig struct {
-	SchemaType         string            `json:"schemaType,omitempty"`
-	SerdeClassName     string            `json:"serdeClassName,omitempty"`
-	IsRegexPattern     bool              `json:"isRegexPattern,omitempty"`
-	ReceiverQueueSize  int               `json:"receiverQueueSize,omitempty"`
-	SchemaProperties   map[string]string `json:"schemaProperties,omitempty"`
-	ConsumerProperties map[string]string `json:"consumerProperties,omitempty"`
-	CryptoConfig       CryptoConfig      `json:"cryptoConfig,omitempty"`
-	PoolMessages       bool              `json:"poolMessages,omitempty"`
+const (
+	BATCHSOURCE_CONFIG_KEY    string = "__BATCHSOURCECONFIGS__"
+	BATCHSOURCE_CLASSNAME_KEY string = "__BATCHSOURCECLASSNAME__"
+)
+
+type BatchSourceConfig struct {
+	DiscoveryTriggererClassName string                 `json:"discoveryTriggererClassName" yaml:"discoveryTriggererClassName"`
+	DiscoveryTriggererConfig    map[string]interface{} `json:"discoveryTriggererConfig,omitempty" yaml:"discoveryTriggererConfig"`
 }

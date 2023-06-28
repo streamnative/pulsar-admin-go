@@ -15,13 +15,11 @@
 
 package utils
 
-type ConsumerConfig struct {
-	SchemaType         string            `json:"schemaType,omitempty"`
-	SerdeClassName     string            `json:"serdeClassName,omitempty"`
-	IsRegexPattern     bool              `json:"isRegexPattern,omitempty"`
-	ReceiverQueueSize  int               `json:"receiverQueueSize,omitempty"`
-	SchemaProperties   map[string]string `json:"schemaProperties,omitempty"`
-	ConsumerProperties map[string]string `json:"consumerProperties,omitempty"`
-	CryptoConfig       CryptoConfig      `json:"cryptoConfig,omitempty"`
-	PoolMessages       bool              `json:"poolMessages,omitempty"`
+type CryptoConfig struct {
+	CryptoKeyReaderClassName string                 `json:"cryptoKeyReaderClassName,omitempty" yaml:"cryptoKeyReaderClassName"`
+	CryptoKeyReaderConfig    map[string]interface{} `json:"cryptoKeyReaderConfig,omitempty" yaml:"cryptoKeyReaderConfig"`
+
+	EncryptionKeys              []string `json:"encryptionKeys,omitempty" yaml:"encryptionKeys"`
+	ProducerCryptoFailureAction string   `json:"producerCryptoFailureAction,omitempty" yaml:"producerCryptoFailureAction"`
+	ConsumerCryptoFailureAction string   `json:"consumerCryptoFailureAction,omitempty" yaml:"consumerCryptoFailureAction"`
 }

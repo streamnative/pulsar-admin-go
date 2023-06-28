@@ -23,25 +23,28 @@ type SinkConfig struct {
 	// Whether the subscriptions the functions created/used should be deleted when the functions is deleted
 	CleanupSubscription bool `json:"cleanupSubscription" yaml:"cleanupSubscription"`
 
-	RetainOrdering bool   `json:"retainOrdering" yaml:"retainOrdering"`
-	AutoAck        bool   `json:"autoAck" yaml:"autoAck"`
-	Parallelism    int    `json:"parallelism,omitempty" yaml:"parallelism"`
-	Tenant         string `json:"tenant,omitempty" yaml:"tenant"`
-	Namespace      string `json:"namespace,omitempty" yaml:"namespace"`
-	Name           string `json:"name,omitempty" yaml:"name"`
-	ClassName      string `json:"className,omitempty" yaml:"className"`
+	RetainOrdering    bool   `json:"retainOrdering" yaml:"retainOrdering"`
+	RetainKeyOrdering bool   `json:"retainKeyOrdering" yaml:"retainKeyOrdering"`
+	AutoAck           bool   `json:"autoAck" yaml:"autoAck"`
+	Parallelism       int    `json:"parallelism,omitempty" yaml:"parallelism"`
+	Tenant            string `json:"tenant,omitempty" yaml:"tenant"`
+	Namespace         string `json:"namespace,omitempty" yaml:"namespace"`
+	Name              string `json:"name,omitempty" yaml:"name"`
+	ClassName         string `json:"className,omitempty" yaml:"className"`
 
+	SinkType                   string `json:"sinkType,omitempty" yaml:"sinkType"`
 	Archive                    string `json:"archive,omitempty" yaml:"archive"`
 	ProcessingGuarantees       string `json:"processingGuarantees,omitempty" yaml:"processingGuarantees"`
 	SourceSubscriptionName     string `json:"sourceSubscriptionName,omitempty" yaml:"sourceSubscriptionName"`
 	SourceSubscriptionPosition string `json:"sourceSubscriptionPosition,omitempty" yaml:"sourceSubscriptionPosition"`
 	RuntimeFlags               string `json:"runtimeFlags,omitempty" yaml:"runtimeFlags"`
 
-	Inputs                []string                  `json:"inputs,omitempty" yaml:"inputs"`
-	TopicToSerdeClassName map[string]string         `json:"topicToSerdeClassName,omitempty" yaml:"topicToSerdeClassName"`
-	TopicToSchemaType     map[string]string         `json:"topicToSchemaType,omitempty" yaml:"topicToSchemaType"`
-	InputSpecs            map[string]ConsumerConfig `json:"inputSpecs,omitempty" yaml:"inputSpecs"`
-	Configs               map[string]interface{}    `json:"configs,omitempty" yaml:"configs"`
+	Inputs                  []string                  `json:"inputs,omitempty" yaml:"inputs"`
+	TopicToSerdeClassName   map[string]string         `json:"topicToSerdeClassName,omitempty" yaml:"topicToSerdeClassName"`
+	TopicToSchemaType       map[string]string         `json:"topicToSchemaType,omitempty" yaml:"topicToSchemaType"`
+	TopicToSchemaProperties map[string]string         `json:"topicToSchemaProperties,omitempty" yaml:"topicToSchemaProperties"`
+	InputSpecs              map[string]ConsumerConfig `json:"inputSpecs,omitempty" yaml:"inputSpecs"`
+	Configs                 map[string]interface{}    `json:"configs,omitempty" yaml:"configs"`
 
 	CustomRuntimeOptions string `json:"customRuntimeOptions,omitempty" yaml:"customRuntimeOptions"`
 
@@ -51,4 +54,11 @@ type SinkConfig struct {
 	// secrets provider. The type of an value here can be found by the
 	// SecretProviderConfigurator.getSecretObjectType() method.
 	Secrets map[string]interface{} `json:"secrets,omitempty" yaml:"secrets"`
+
+	MaxMessageRetries            int    `json:"maxMessageRetries,omitempty" yaml:"maxMessageRetries"`
+	DeadLetterTopic              string `json:"deadLetterTopic,omitempty" yaml:"deadLetterTopic"`
+	NegativeAckRedeliveryDelayMs int64  `json:"negativeAckRedeliveryDelayMs,omitempty" yaml:"negativeAckRedeliveryDelayMs"`
+	TransformFunction            string `json:"transformFunction,omitempty" yaml:"transformFunction"`
+	TransformFunctionClassName   string `json:"transformFunctionClassName,omitempty" yaml:"transformFunctionClassName"`
+	TransformFunctionConfig      string `json:"transformFunctionConfig,omitempty" yaml:"transformFunctionConfig"`
 }
