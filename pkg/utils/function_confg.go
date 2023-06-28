@@ -84,7 +84,8 @@ type FunctionConfig struct {
 	// SecretProviderConfigurator.getSecretObjectType() method.
 	Secrets map[string]interface{} `json:"secrets,omitempty" yaml:"secrets"`
 
-	MaxPendingAsyncRequests        int    `json:"maxPendingAsyncRequests,omitempty" yaml:"maxPendingAsyncRequests"`
+	MaxPendingAsyncRequests int `json:"maxPendingAsyncRequests,omitempty" yaml:"maxPendingAsyncRequests"`
+	//nolint
 	ExposePulsarAdminClientEnabled bool   `json:"exposePulsarAdminClientEnabled,omitempty" yaml:"exposePulsarAdminClientEnabled"`
 	SkipToLatest                   bool   `json:"skipToLatest,omitempty" yaml:"skipToLatest"`
 	SubscriptionPosition           string `json:"subscriptionPosition,omitempty" yaml:"subscriptionPosition"`

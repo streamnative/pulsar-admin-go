@@ -16,11 +16,12 @@
 package utils
 
 const (
-	BATCHSOURCE_CONFIG_KEY    string = "__BATCHSOURCECONFIGS__"
-	BATCHSOURCE_CLASSNAME_KEY string = "__BATCHSOURCECLASSNAME__"
+	BatchsourceConfigKey    string = "__BATCHSOURCECONFIGS__"
+	BatchsourceClassnameKey string = "__BATCHSOURCECLASSNAME__"
 )
 
 type BatchSourceConfig struct {
-	DiscoveryTriggererClassName string                 `json:"discoveryTriggererClassName" yaml:"discoveryTriggererClassName"`
-	DiscoveryTriggererConfig    map[string]interface{} `json:"discoveryTriggererConfig,omitempty" yaml:"discoveryTriggererConfig"`
+	DiscoveryTriggererClassName string `json:"discoveryTriggererClassName" yaml:"discoveryTriggererClassName"`
+
+	DiscoveryTriggererConfig map[string]interface{} `json:"discoveryTriggererConfig" yaml:"discoveryTriggererConfig"`
 }

@@ -39,12 +39,13 @@ type SinkConfig struct {
 	SourceSubscriptionPosition string `json:"sourceSubscriptionPosition,omitempty" yaml:"sourceSubscriptionPosition"`
 	RuntimeFlags               string `json:"runtimeFlags,omitempty" yaml:"runtimeFlags"`
 
-	Inputs                  []string                  `json:"inputs,omitempty" yaml:"inputs"`
-	TopicToSerdeClassName   map[string]string         `json:"topicToSerdeClassName,omitempty" yaml:"topicToSerdeClassName"`
-	TopicToSchemaType       map[string]string         `json:"topicToSchemaType,omitempty" yaml:"topicToSchemaType"`
-	TopicToSchemaProperties map[string]string         `json:"topicToSchemaProperties,omitempty" yaml:"topicToSchemaProperties"`
-	InputSpecs              map[string]ConsumerConfig `json:"inputSpecs,omitempty" yaml:"inputSpecs"`
-	Configs                 map[string]interface{}    `json:"configs,omitempty" yaml:"configs"`
+	Inputs                []string                  `json:"inputs,omitempty" yaml:"inputs"`
+	TopicToSerdeClassName map[string]string         `json:"topicToSerdeClassName,omitempty" yaml:"topicToSerdeClassName"`
+	TopicToSchemaType     map[string]string         `json:"topicToSchemaType,omitempty" yaml:"topicToSchemaType"`
+	InputSpecs            map[string]ConsumerConfig `json:"inputSpecs,omitempty" yaml:"inputSpecs"`
+	Configs               map[string]interface{}    `json:"configs,omitempty" yaml:"configs"`
+
+	TopicToSchemaProperties map[string]string `json:"topicToSchemaProperties,omitempty" yaml:"topicToSchemaProperties"`
 
 	CustomRuntimeOptions string `json:"customRuntimeOptions,omitempty" yaml:"customRuntimeOptions"`
 

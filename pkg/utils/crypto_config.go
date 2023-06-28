@@ -16,10 +16,10 @@
 package utils
 
 type CryptoConfig struct {
-	CryptoKeyReaderClassName string                 `json:"cryptoKeyReaderClassName,omitempty" yaml:"cryptoKeyReaderClassName"`
-	CryptoKeyReaderConfig    map[string]interface{} `json:"cryptoKeyReaderConfig,omitempty" yaml:"cryptoKeyReaderConfig"`
+	CryptoKeyReaderClassName string                 `json:"cryptoKeyReaderClassName" yaml:"cryptoKeyReaderClassName"`
+	CryptoKeyReaderConfig    map[string]interface{} `json:"cryptoKeyReaderConfig" yaml:"cryptoKeyReaderConfig"`
 
-	EncryptionKeys              []string `json:"encryptionKeys,omitempty" yaml:"encryptionKeys"`
-	ProducerCryptoFailureAction string   `json:"producerCryptoFailureAction,omitempty" yaml:"producerCryptoFailureAction"`
-	ConsumerCryptoFailureAction string   `json:"consumerCryptoFailureAction,omitempty" yaml:"consumerCryptoFailureAction"`
+	EncryptionKeys              []string `json:"encryptionKeys" yaml:"encryptionKeys"`
+	ProducerCryptoFailureAction string   `json:"producerCryptoFailureAction" yaml:"producerCryptoFailureAction"`
+	ConsumerCryptoFailureAction string   `json:"consumerCryptoFailureAction" yaml:"consumerCryptoFailureAction"`
 }

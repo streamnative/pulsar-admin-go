@@ -16,10 +16,12 @@
 package utils
 
 type ProducerConfig struct {
-	MaxPendingMessages                 int          `json:"maxPendingMessages,omitempty" yaml:"maxPendingMessages"`
-	MaxPendingMessagesAcrossPartitions int          `json:"maxPendingMessagesAcrossPartitions,omitempty" yaml:"maxPendingMessagesAcrossPartitions"`
-	UseThreadLocalProducers            bool         `json:"useThreadLocalProducers,omitempty" yaml:"useThreadLocalProducers"`
-	CryptoConfig                       CryptoConfig `json:"cryptoConfig,omitempty" yaml:"cryptoConfig"`
-	BatchBuilder                       string       `json:"batchBuilder,omitempty" yaml:"batchBuilder"`
-	CompressionType                    string       `json:"compressionType,omitempty" yaml:"compressionType"`
+	MaxPendingMessages int `json:"maxPendingMessages" yaml:"maxPendingMessages"`
+	//nolint
+	MaxPendingMessagesAcrossPartitions int `json:"maxPendingMessagesAcrossPartitions" yaml:"maxPendingMessagesAcrossPartitions"`
+
+	UseThreadLocalProducers bool         `json:"useThreadLocalProducers" yaml:"useThreadLocalProducers"`
+	CryptoConfig            CryptoConfig `json:"cryptoConfig" yaml:"cryptoConfig"`
+	BatchBuilder            string       `json:"batchBuilder" yaml:"batchBuilder"`
+	CompressionType         string       `json:"compressionType" yaml:"compressionType"`
 }
