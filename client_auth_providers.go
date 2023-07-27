@@ -74,6 +74,14 @@ type AuthParamsTLS struct {
 	TLSKeyFile  string `json:"tlsKeyFile"`
 }
 
+// AuthProviderTLS returns a TLS-based authentication provider from a
+// TLS certificate and key file.
+func AuthProviderTLS(certFile, keyFile string) AuthProvider {
+	return func(transport *http.Transport) (http.RoundTripper, error) {
+		return auth.NewTLSProvider(certFile, keyFile, transport)
+	}
+}
+
 // AuthParamsOAuth2 represents the JSON data needed to initialize a client with
 // OAuth2 Authentication
 type AuthParamsOAuth2 struct {
@@ -82,6 +90,15 @@ type AuthParamsOAuth2 struct {
 	Audience   string `json:"audience,omitempty"`
 	Scope      string `json:"scope,omitempty"`
 	PrivateKey string `json:"privateKey,omitempty"`
+}
+
+// AuthProviderOAuth2 returns an OAuth2-based authentication provider with
+// optional private key.
+func AuthProviderOAuth2(params AuthParamsOAuth2) AuthProvider {
+	return func(transport *http.Transport) (http.RoundTripper, error) {
+		return auth.NewOauth2Provider(params.IssuerURL, params.Audience,
+			params.Scope, params.ClientID, params.PrivateKey, transport)
+	}
 }
 
 // AuthParamsToken represents the JSON data needed to initialize a client with
