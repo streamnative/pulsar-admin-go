@@ -28,8 +28,8 @@ type TLSTransport struct {
 	T http.RoundTripper
 }
 
-// NewTLSProvider initialize the authentication provider
-func NewTLSProvider(certificatePath string, privateKeyPath string, transport *http.Transport) (*TLSTransport, error) {
+// NewTLSTransport initialize the authentication provider
+func NewTLSTransport(certificatePath string, privateKeyPath string, transport *http.Transport) (*TLSTransport, error) {
 	switch {
 	case certificatePath == "":
 		return nil, errors.New("certificate path required")
@@ -51,7 +51,7 @@ func NewTLSProvider(certificatePath string, privateKeyPath string, transport *ht
 	}, nil
 }
 
-func NewTLSProviderFromKV(paramString string, transport *http.Transport) (*TLSTransport, error) {
+func NewTLSTransportFromKV(paramString string, transport *http.Transport) (*TLSTransport, error) {
 	var (
 		certificatePath string
 		privateKeyPath  string
@@ -69,7 +69,7 @@ func NewTLSProviderFromKV(paramString string, transport *http.Transport) (*TLSTr
 	if certificatePath == "" && privateKeyPath == "" {
 		return nil, errors.New(`TLS auth params must be in the form of "tlsCertFile:<path>,tlsKeyFile:<path>"`)
 	}
-	return NewTLSProvider(certificatePath, privateKeyPath, transport)
+	return NewTLSTransport(certificatePath, privateKeyPath, transport)
 }
 
 func (p *TLSTransport) RoundTrip(req *http.Request) (*http.Response, error) {

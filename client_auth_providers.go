@@ -35,20 +35,20 @@ func AuthProviderPlugin(pluginName string, authParams string) AuthProvider {
 				if err := unmarshalParams(authParams, params); err != nil {
 					return nil, err
 				}
-				return auth.NewTLSProvider(params.TLSCertFile, params.TLSKeyFile, transport)
+				return auth.NewTLSTransport(params.TLSCertFile, params.TLSKeyFile, transport)
 			}
 			// also supports KV
-			return auth.NewTLSProviderFromKV(authParams, transport)
+			return auth.NewTLSTransportFromKV(authParams, transport)
 		case AuthPluginToken, AuthPluginClassToken:
 			params := &AuthParamsToken{}
 			if seemsJSON(authParams) {
 				if err := unmarshalParams(authParams, params); err != nil {
 					return nil, err
 				}
-				return auth.NewTokenProvider(params.Token, transport)
+				return auth.NewTokenTransport(params.Token, transport)
 			}
 			// also supports KV
-			return auth.NewTokenProviderFromKV(authParams, transport)
+			return auth.NewTokenTransportFromKV(authParams, transport)
 		case AuthPluginOAuth2, AuthPluginClassOAuth2:
 			params := &AuthParamsOAuth2{}
 			if err := unmarshalParams(authParams, params); err != nil {
@@ -78,7 +78,7 @@ type AuthParamsTLS struct {
 // TLS certificate and key file.
 func AuthProviderTLS(certFile, keyFile string) AuthProvider {
 	return func(transport *http.Transport) (http.RoundTripper, error) {
-		return auth.NewTLSProvider(certFile, keyFile, transport)
+		return auth.NewTLSTransport(certFile, keyFile, transport)
 	}
 }
 
@@ -117,7 +117,7 @@ type AuthParamsToken struct {
 // token data.
 func AuthProviderToken(token string) AuthProvider {
 	return func(transport *http.Transport) (http.RoundTripper, error) {
-		return auth.NewTokenProvider(token, transport)
+		return auth.NewTokenTransport(token, transport)
 	}
 }
 
@@ -125,7 +125,7 @@ func AuthProviderToken(token string) AuthProvider {
 // token stored in a file.
 func AuthProviderTokenFile(tokenPath string) AuthProvider {
 	return func(transport *http.Transport) (http.RoundTripper, error) {
-		return auth.NewTokenProviderFromFile(tokenPath, transport)
+		return auth.NewTokenTransportFromFile(tokenPath, transport)
 	}
 }
 

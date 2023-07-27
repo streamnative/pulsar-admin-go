@@ -36,7 +36,7 @@ type TokenTransport struct {
 	T     http.RoundTripper
 }
 
-func NewTokenProvider(tokenData string, transport *http.Transport) (*TokenTransport, error) {
+func NewTokenTransport(tokenData string, transport *http.Transport) (*TokenTransport, error) {
 	tokenData = strings.TrimSpace(tokenData)
 	if len(tokenData) == 0 {
 		return nil, errors.New("empty token")
@@ -47,20 +47,20 @@ func NewTokenProvider(tokenData string, transport *http.Transport) (*TokenTransp
 	}, nil
 }
 
-func NewTokenProviderFromKV(paramString string, transport *http.Transport) (*TokenTransport, error) {
+func NewTokenTransportFromKV(paramString string, transport *http.Transport) (*TokenTransport, error) {
 	switch {
 	case strings.HasPrefix(paramString, tokenPrefix):
 		token := paramString[len(tokenPrefix):]
-		return NewTokenProvider(token, transport)
+		return NewTokenTransport(token, transport)
 	case strings.HasPrefix(paramString, filePrefix):
 		tokenFile := paramString[len(filePrefix):]
-		return NewTokenProviderFromFile(tokenFile, transport)
+		return NewTokenTransportFromFile(tokenFile, transport)
 	default:
-		return NewTokenProvider(paramString, transport)
+		return NewTokenTransport(paramString, transport)
 	}
 }
 
-func NewTokenProviderFromFile(tokenPath string, transport *http.Transport) (*TokenTransport, error) {
+func NewTokenTransportFromFile(tokenPath string, transport *http.Transport) (*TokenTransport, error) {
 	fileContents, err := os.ReadFile(tokenPath)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -68,7 +68,7 @@ func NewTokenProviderFromFile(tokenPath string, transport *http.Transport) (*Tok
 		}
 		return nil, fmt.Errorf("unable to open token file: %v", err)
 	}
-	return NewTokenProvider(string(fileContents), transport)
+	return NewTokenTransport(string(fileContents), transport)
 }
 
 func (p *TokenTransport) RoundTrip(req *http.Request) (*http.Response, error) {
