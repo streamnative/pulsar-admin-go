@@ -86,7 +86,9 @@ func NewClient(config ClientConfig) (Client, error) {
 		if err != nil {
 			return nil, fmt.Errorf("auth provider: %w", err)
 		}
-		clientTransport = authTransport
+		if authTransport != nil {
+			clientTransport = authTransport
+		}
 	}
 
 	return &pulsarClient{

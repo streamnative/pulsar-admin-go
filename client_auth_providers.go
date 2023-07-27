@@ -10,12 +10,14 @@ import (
 
 // The following are the valid values for pluginName in calls to [AuthProviderPlugin]
 const (
-	AuthPluginTLS         = "tls"
-	AuthPluginClassTLS    = "org.apache.pulsar.client.impl.auth.AuthenticationTls"
-	AuthPluginOAuth2      = "oauth2"
-	AuthPluginClassOAuth2 = "org.apache.pulsar.client.impl.auth.oauth2.AuthenticationOAuth2"
-	AuthPluginToken       = "token"
-	AuthPluginClassToken  = "org.apache.pulsar.client.impl.auth.AuthenticationToken"
+	AuthPluginTLS           = "tls"
+	AuthPluginClassTLS      = "org.apache.pulsar.client.impl.auth.AuthenticationTls"
+	AuthPluginOAuth2        = "oauth2"
+	AuthPluginClassOAuth2   = "org.apache.pulsar.client.impl.auth.oauth2.AuthenticationOAuth2"
+	AuthPluginToken         = "token"
+	AuthPluginClassToken    = "org.apache.pulsar.client.impl.auth.AuthenticationToken"
+	AuthPluginDisabled      = "disabled"
+	AuthPluginClassDisabled = "org.apache.pulsar.client.impl.auth.AuthenticationDisabled"
 )
 
 // AuthProvider is a function that receives a default HTTP transport and returns
@@ -56,6 +58,8 @@ func AuthProviderPlugin(pluginName string, authParams string) AuthProvider {
 			}
 			return auth.NewOauth2Provider(params.IssuerURL, params.Audience,
 				params.Scope, params.ClientID, params.PrivateKey, transport)
+		case AuthPluginDisabled, AuthPluginClassDisabled:
+			return nil, nil
 		}
 		return nil, fmt.Errorf("unknown AuthPlugin %q", pluginName)
 	}
