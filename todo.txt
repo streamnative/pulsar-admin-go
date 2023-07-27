@@ -1,0 +1,14 @@
+- Topics List has problems
+  - takes a utils.NamespaceName, but utils.GetNamespaceName returns a *utils.NamespaceName. This is a terrible UX
+  - takes a special namespace type, what's up with that? Should take (tenant string, namespace string)
+  - returns two []string for partitioned and non-partitioned topics. It should return a single type
+    type TopicList struct {
+        Topics []string
+        npIdx int
+    }
+    func (tl *TopicList) Partitioned() []string {
+        return tl.Topics[:npIdx]
+    }
+    func (tl *TopicList) NonPartitioned() []string {
+        return tl.Topics[npIdx:]
+    }
