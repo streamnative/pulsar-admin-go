@@ -93,7 +93,7 @@ func NewClient(config ClientConfig) (Client, error) {
 
 	return &pulsarClient{
 		restClient: rest.NewClient(clientTransport, config.WebServiceURL, Product+`/`+ReleaseVersion),
-		apiProfile: APIProfile{},
+		apiProfile: *config.APIProfile,
 	}, nil
 }
 
