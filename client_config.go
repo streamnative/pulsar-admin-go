@@ -84,5 +84,6 @@ type APIProfile struct {
 func defaultAPIProfile() *APIProfile {
 	return &APIProfile{
 		Functions: APIV3,
+		Packages:  APIV3,
 	}
 }
